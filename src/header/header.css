@@ -1,0 +1,22 @@
+.header {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+  min-height: 100px;
+  width: 100%;
+  z-index: 9999;
+}
+.header-img {
+  width: 70px;
+  height: 70px;
+  border-radius: 20%;
+  object-fit: cover;
+  margin-left: 20px;
+}
+.header-title {
+  color: #1818183f;
+  margin-left: 20px;
+}
