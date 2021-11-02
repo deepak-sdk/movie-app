@@ -4,11 +4,12 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  /* border: 1px solid black; */
 }
 
 body {
   font-family: "Bebas Neue", cursive;
-  /* font-family: 'Poppins', sans-serif; */
+  /* font-family: "Poppins", sans-serif; */
   /* background-image: linear-gradient(
     to left top,
     #77a8a6,

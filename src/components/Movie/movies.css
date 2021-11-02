@@ -2,6 +2,7 @@
   width: 250px;
   height: 350px;
 }
+/* Page content */
 .movies-list {
   display: flex;
   padding: 20px;
@@ -12,7 +13,7 @@
   /* border: 1px solid rgba(128, 128, 128, 0.404); */
   border-radius: 10px;
 
-  /* flex-direction: column; */
+  /* flex-direction: row; */
 }
 .movie-content {
   max-width: 200px;
@@ -24,4 +25,20 @@
 }
 .movie-name {
   letter-spacing: 2px;
+}
+.hide-show-summary {
+  width: fit-content;
+  margin-top: 5px;
+  padding: 5px;
+  height: 20px;
+  font-size: 8px;
+  /* font-family: "Bebas Neue", cursive; */
+  font-family: "Poppins", sans-serif;
+  border: none;
+  background: rgba(161, 161, 161, 0.527);
+}
+@media (min-width: 280px) and (max-width: 480px) {
+  .movies-list {
+    flex-direction: column;
+  }
 }
