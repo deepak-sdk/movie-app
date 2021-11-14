@@ -26,6 +26,9 @@
 .movie-name {
   letter-spacing: 2px;
 }
+/* .movie-summary {
+  height: 50px;
+} */
 .hide-show-summary {
   width: fit-content;
   margin-top: 5px;
@@ -35,7 +38,13 @@
   /* font-family: "Bebas Neue", cursive; */
   font-family: "Poppins", sans-serif;
   border: none;
+  border-radius: 5px;
   background: rgba(161, 161, 161, 0.527);
+}
+.rating-summary-details {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
 }
 @media (min-width: 280px) and (max-width: 480px) {
   .movies-list {

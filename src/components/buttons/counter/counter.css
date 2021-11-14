@@ -1,12 +1,22 @@
 .counter-container {
   display: flex;
   gap: 10px;
+  justify-content: start;
+  align-items: center;
 }
 .likes-dislikes {
-  width: 50px;
-  height: 30px;
+  width: 35px;
+  height: 35px;
   /* font-family: "Bebas Neue", cursive; */
-  font-family: "Poppins", sans-serif;
   border: none;
-  background: rgba(161, 161, 161, 0.527);
+  border-radius: 50%;
+  margin-top: 20px;
+  cursor: pointer;
+}
+.css-i4bv87-MuiSvgIcon-root {
+  width: 0.8em !important;
+}
+.css-106c1u2-MuiBadge-badge {
+  top: 16px !important;
+  right: 6px !important;
 }

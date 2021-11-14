@@ -1,0 +1,11 @@
+.is-done {
+  list-style: symbols();
+}
+.not-done {
+  list-style: circle;
+}
+.todo-list {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
