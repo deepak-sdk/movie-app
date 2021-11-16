@@ -1,17 +1,17 @@
 .movie-poster {
-  width: 250px;
-  height: 350px;
+  width: 200px;
+  height: 300px;
 }
 /* Page content */
 .movies-list {
   display: flex;
-  padding: 20px;
+  padding: 10px;
   margin: 10px;
-  width: fit-content;
-  background: rgba(255, 255, 255, 0.027);
-  box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px;
+  /* width: fit-content; */
+  /* background: rgba(255, 255, 255, 0.027); */
+  /* box-shadow: rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px; */
   /* border: 1px solid rgba(128, 128, 128, 0.404); */
-  border-radius: 10px;
+  /* border-radius: 10px; */
 
   /* flex-direction: row; */
 }
@@ -23,28 +23,52 @@
   justify-content: center;
   flex-direction: column;
 }
-.movie-name {
-  letter-spacing: 2px;
+.header-icons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
-/* .movie-summary {
-  height: 50px;
-} */
-.hide-show-summary {
-  width: fit-content;
+.movie-name {
+  width: 120px;
+  margin: 0 !important;
+}
+.movie-header > .hide-show-summary {
+  margin-left: 5px;
+}
+.movie-summary {
+  margin: 5px 0;
+  font-size: 1rem;
+}
+.movie-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.css-i4bv87-MuiSvgIcon-root {
+  font-size: 1.3rem !important;
+}
+.css-78trlr-MuiButtonBase-root-MuiIconButton-root {
+  height: 0 !important;
+  width: 0 !important;
+}
+/* .hide-show-summary {
+  width: 20px;
   margin-top: 5px;
-  padding: 5px;
+  padding: 4px;
   height: 20px;
-  font-size: 8px;
-  /* font-family: "Bebas Neue", cursive; */
+  font-size: 9px;
+  font-family: "Bebas Neue", cursive; 
   font-family: "Poppins", sans-serif;
   border: none;
   border-radius: 5px;
-  background: rgba(161, 161, 161, 0.527);
-}
+  background: rgba(161, 161, 161, 0.527); 
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+} */
 .rating-summary-details {
   display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
+  flex-direction: column;
 }
 @media (min-width: 280px) and (max-width: 480px) {
   .movies-list {
