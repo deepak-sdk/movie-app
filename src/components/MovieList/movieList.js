@@ -34,7 +34,7 @@ export function MovieList({ martinscorses, setMovies }) {
 						<DeleteIcon
 							className="likes-dislikes"
 							onClick={() => {
-								setMovies(martinscorses.filter((mv, ind) => ind != index));
+								setMovies(martinscorses.filter((mv, ind) => ind !== index));
 							}}
 						></DeleteIcon>
 					}
