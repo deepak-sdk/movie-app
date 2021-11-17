@@ -66,6 +66,9 @@
   align-items: center;
   justify-content: space-around;
 } */
+.movie-info {
+  cursor: pointer;
+}
 .rating-summary-details {
   display: flex;
   flex-direction: column;

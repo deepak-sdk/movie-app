@@ -3,18 +3,18 @@ import "./App.css";
 import { MovieList } from "./components/MovieList/movieList";
 import { Header } from "./components/header/header";
 import { AddMovie } from "./components/AddMovie/AddMovie";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import { EditMovie } from "./components/EditMovie/EditMovie";
 import { TodoList } from "./components/Todo/TodoList";
-
+import { MovieInfo } from "./components/MovieInfo/MovieInfo";
 const martinscorses = [
   {
     name: "Taxi Driver",
     pic: "https://i.pinimg.com/originals/8c/9c/50/8c9c507d71317328576b81cdeb402868.jpg",
     summary:
       "Taxi Driver is the story of how Travis gets ORGANIZED—how he makes himself into a person out of his scattered scraps of information about life as gleaned from the nocturnal undergrounds of the city.",
-    rating: "8.2",
-    year: "1972",
+    rating: 8.2,
+    year: 1972,
     trailer: "https://www.youtube.com/embed/UUxD4-dEzn0",
   },
   {
@@ -22,8 +22,8 @@ const martinscorses = [
     pic: "https://th.bing.com/th/id/R.2436835c74b8017745b04a020d0174e6?rik=NU9IGHDvYIYi0w&riu=http%3a%2f%2fwww.cultjer.com%2fimg%2fug_photo%2f2014_01%2ftumblr_mdnxv8jJ201qm7fcfo6_12820140127170303.jpg&ehk=sAn2RgGdPJaMi9zoX5c1ikWGxuIeY%2fSp6fP0zsh%2ftq0%3d&risl=&pid=ImgRaw&r=0",
     summary:
       "A fighter noted less for his technique than his ability to inflict physical punishment on his opponents, La Motta was once banned from the sport for throwing a fight.",
-    rating: "8.2",
-    year: "1980",
+    rating: 8.2,
+    year: 1980,
     trailer: "https://www.youtube.com/embed/yUp6d79WRVI",
   },
   {
@@ -40,8 +40,8 @@ const martinscorses = [
     pic: "https://i.pinimg.com/474x/c8/7b/a4/c87ba4ec4c235780746c4205ba62753a--s-movies-comedy-movies.jpg",
     summary:
       "Rupert Pupkin is a passionate yet unsuccessful comic who craves nothing more than to be in the spotlight and to achieve this, he stalks and kidnaps his idol to take the spotlight for himself.",
-    rating: "7.8",
-    year: "1983",
+    rating: 7.8,
+    year: 1983,
     trailer: "https://www.youtube.com/embed/0wVhCCo02P4",
   },
   {
@@ -49,8 +49,8 @@ const martinscorses = [
     pic: "https://th.bing.com/th/id/R.268dae17633ae6f0084dd1b2c1ab6975?rik=BvoMFD%2b7TCr5QQ&riu=http%3a%2f%2ffc05.deviantart.net%2ffs70%2ff%2f2013%2f228%2f7%2fb%2fthe_wolf_of_wall_street_minimalist_poster_by_dcomp-d6ie0cr.jpg&ehk=MX1r8PqVmNKg5KGJ%2bpmzUefZkqyW%2ffQfiK26NQoPsJ4%3d&risl=&pid=ImgRaw&r=0",
     summary:
       "Based on the true story of Jordan Belfort, from his rise to a wealthy stock-broker living the high life to his fall involving crime, corruption and the federal government.",
-    rating: "8.2",
-    year: "2013",
+    rating: 8.2,
+    year: 2013,
     trailer: "https://www.youtube.com/embed/iszwuX1AK6A",
   },
   {
@@ -58,8 +58,8 @@ const martinscorses = [
     pic: "https://i.pinimg.com/originals/a6/5e/51/a65e51e99c84df7fa20d5fa5e872058d.jpg",
     summary:
       "When a patient at an isolated asylum disappears from a locked room, US Marshall Edward Teddy Daniels investigates but discovers that Shutter Island has a sinister secret.",
-    rating: "8.2",
-    year: "2010",
+    rating: 8.2,
+    year: 2010,
     trailer: "https://www.youtube.com/embed/5iaYLCiq5RM",
   },
 ];
@@ -85,8 +85,14 @@ function App() {
       <Header />
       {/* <MartinScorsese /> */}
       <Switch>
+
+        {/* Route matches by sub-string */}
+
         <Route exact path="/">
-          <MovieList martinscorses={movies} />
+          <MovieList martinscorses={movies} setMovies={setMovies} />
+        </Route>
+        <Route path="/addmovies">
+          <Redirect to="/addmovie" />
         </Route>
         <Route path="/addmovie">
           <AddMovie martinscorses={movies} addMovies={addMovie} />
@@ -96,6 +102,13 @@ function App() {
         </Route>
         <Route path="/edit">
           <EditMovie />
+        </Route>
+        {/* UseHistory */}
+        <Route path="/movie-info/:id">
+          <MovieInfo martinscorses={movies} />
+        </Route>
+        <Route path="**">
+          <h1>Page not found</h1>
         </Route>
       </Switch>
     </div>

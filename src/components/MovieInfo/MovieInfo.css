@@ -1,0 +1,12 @@
+.movie-info-name-rating {
+  display: flex;
+  justify-content: space-between;
+}
+.movie-info-summary,
+.movie-info-rating {
+  max-width: 540px;
+}
+.movie-info-container {
+  padding: 24px;
+  margin-right: auto;
+}
