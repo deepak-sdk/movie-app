@@ -8,9 +8,6 @@ import "./movieList.css";
 export function MovieList({ martinscorses, setMovies }) {
 	const history = useHistory();
 
-	const handleEditHistory = () => {
-		history.push("./edit");
-	};
 
 
 	return (
@@ -26,7 +23,9 @@ export function MovieList({ martinscorses, setMovies }) {
 					year={year}
 					editButton={
 						<EditIcon
-							onClick={handleEditHistory}
+							onClick={() => {
+								history.push("./movie-edit/" + index);
+							}}
 							className="likes-dislikes"
 						></EditIcon>
 					}

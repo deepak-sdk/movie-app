@@ -100,8 +100,8 @@ function App() {
         <Route path="/todo">
           <TodoList />
         </Route>
-        <Route path="/edit">
-          <EditMovie />
+        <Route path="/movie-edit/:id">
+          <EditMovie martinscorses={movies} setMovies={setMovies} />
         </Route>
         {/* UseHistory */}
         <Route path="/movie-info/:id">

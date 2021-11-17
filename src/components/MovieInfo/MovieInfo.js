@@ -1,35 +1,54 @@
 import React from "react";
-import { useParams } from "react-router";
+import Button from "@mui/material/Button";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import { useParams, useHistory } from "react-router";
 import "./MovieInfo.css";
 
 export const MovieInfo = ({ martinscorses }) => {
     const { id } = useParams();
     const movie = martinscorses[id];
 
+    const history = useHistory();
+
     const styles = {
         color: movie.rating < 8 ? "crimson" : "green",
     };
     return (
-        <>
-            <iframe
-                width="96%"
-                height="560"
-                src={movie.trailer}
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-            ></iframe>
-            <div className="movie-info-container">
+        <div className="movie-info-container">
+            <div className="youtube-video">
+                <iframe
+                    width="100%"
+                    height="450"
+                    src={movie.trailer}
+                    title="YouTube video player"
+                    frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen
+                ></iframe>
+            </div>
 
+            <div className="movie-info">
                 <div className="movie-info-name-rating">
                     <h1 className="movie-info-name">{movie.name}</h1>
                     <p className="movie-info-rating" style={styles}>
                         {movie.rating}⭐
                     </p>
                 </div>
-                <p className="movie-info-summary">{movie.summary}</p>
+                <div className="movie-info-summary-button">
+                    <p className="movie-info-summary">{movie.summary}</p>
+
+                    <Button
+                        className="goback-button"
+                        variant="outlined"
+                        onClick={() => {
+                            history.goBack();
+                        }}
+                        startIcon={<ArrowBackIcon />}
+                    >
+                        Back
+                    </Button>
+                </div>
             </div>
-        </>
+        </div>
     );
 };

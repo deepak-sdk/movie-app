@@ -5,7 +5,7 @@ import ThumbDownIcon from "@mui/icons-material/ThumbDown";
 import Badge from "@mui/material/Badge";
 import "./counter.css";
 
-export default function Counter({ index }) {
+export default function Counter() {
   // let like = 10;
   // const [state, setState] = useState(IntialValue)
   // state = current scenario = current data

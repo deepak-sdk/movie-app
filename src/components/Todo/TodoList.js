@@ -1,9 +1,22 @@
 import React, { useState } from "react";
-import './TodoList.css'
+
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
+import { ListItem, ListItemIcon, ListItemText } from "@mui/material";
+import HighlightOffIcon from '@mui/icons-material/HighlightOff';
+import ControlPointIcon from '@mui/icons-material/ControlPoint';
+import "./TodoList.css";
+
 
 export const TodoList = () => {
     const [item, setItem] = useState("");
     const [itemList, setItemList] = useState([]);
+
+    const AddIcon = <ControlPointIcon />
+    const DoneIcon = <HighlightOffIcon />
 
     const handleClick = () => {
         setItemList((prevItems) => [...prevItems, { item, isDone: false }]);
@@ -23,38 +36,45 @@ export const TodoList = () => {
 
     console.log(itemList);
     return (
-        <div>
-            <>
-                <input
+        <div className="todo-list">
+            <div className="input-button">
+                <TextField
+                    id="outlined-basic"
+                    variant="outlined"
+                    label="Mention Todo"
                     type="text"
                     value={item}
                     onChange={(e) => {
                         setItem(e.target.value);
                     }}
                 />
-                <button onClick={handleClick}>Add</button>
-            </>
+                <Button variant="outlined" onClick={handleClick}>
+                    Add
+                </Button>
+            </div>
 
-            <>
-                <p>
+            <Card>
+                <CardContent className="list-text">
+
                     {itemList.filter((el) => el.isDone).length} completed from {""}
                     {itemList.length}
-                </p>
-            </>
-            <>
-                <ul>
-                    {itemList.map((itemCurrent, i) => (
-                        <li
-                            key={i}
-                            onClick={() => handleItemClass(i)}
-                            className={itemCurrent.isDone ? "is-done" : "not-done"}
-                        >
-                            {itemCurrent.item}
-                        </li>
-                    ))}
-                </ul>
-            </>
 
+                </CardContent>
+                <CardActions>
+                    <ul>
+                        {itemList.map((itemCurrent, i) => (
+                            <ListItem
+                                key={i}
+                                onClick={() => handleItemClass(i)}
+                            >
+                                {itemCurrent.isDone ? <ListItemIcon>{DoneIcon}</ListItemIcon> : <ListItemIcon>{AddIcon}</ListItemIcon>}
+
+                                <ListItemText>{itemCurrent.item}</ListItemText>
+                            </ListItem>
+                        ))}
+                    </ul>
+                </CardActions>
+            </Card>
         </div>
     );
 };

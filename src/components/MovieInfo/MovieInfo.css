@@ -1,12 +1,33 @@
+.movie-info {
+  margin: 20px 0;
+}
 .movie-info-name-rating {
   display: flex;
   justify-content: space-between;
-}
-.movie-info-summary,
-.movie-info-rating {
+  align-items: center;
   max-width: 540px;
 }
+
+.movie-info-summary {
+  max-width: 540px;
+  margin-top: 10px;
+  font-size: medium;
+}
 .movie-info-container {
-  padding: 24px;
-  margin-right: auto;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  width: 96%;
+}
+.movie-info-summary-button {
+  display: flex;
+  flex-direction: column;
+  max-width: 540px;
+}
+.youtube-video {
+  min-height: 100px;
+}
+.goback-button {
+  width: 100px;
+  height: 30px;
 }
