@@ -7,6 +7,8 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import { EditMovie } from "./components/EditMovie/EditMovie";
 import { TodoList } from "./components/Todo/TodoList";
 import { MovieInfo } from "./components/MovieInfo/MovieInfo";
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import Paper from '@mui/material/Paper';
 const martinscorses = [
   {
     name: "Taxi Driver",
@@ -70,6 +72,14 @@ function App() {
   //   .then((movies) =>
   //     console.log(movies.map((ele) => ele)));
 
+  const [mode, setMode] = useState('light')
+
+  const theme = createTheme({
+    palette: {
+      mode: mode,
+    },
+  });
+
   const [movies, setMovies] = useState(martinscorses);
 
   const addMovie = (data) => {
@@ -81,37 +91,39 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <Header />
-      {/* <MartinScorsese /> */}
-      <Switch>
+    <ThemeProvider theme={theme}>
+      <Paper elevation={3} style={{ borderRadius: '0', minHeight: '100vh' }} className="App">
+        <Header setMode={setMode} mode={mode} />
+        {/* <MartinScorsese /> */}
+        <Switch>
 
-        {/* Route matches by sub-string */}
+          {/* Route matches by sub-string */}
 
-        <Route exact path="/">
-          <MovieList martinscorses={movies} setMovies={setMovies} />
-        </Route>
-        <Route path="/addmovies">
-          <Redirect to="/addmovie" />
-        </Route>
-        <Route path="/addmovie">
-          <AddMovie martinscorses={movies} addMovies={addMovie} />
-        </Route>
-        <Route path="/todo">
-          <TodoList />
-        </Route>
-        <Route path="/movie-edit/:id">
-          <EditMovie martinscorses={movies} setMovies={setMovies} />
-        </Route>
-        {/* UseHistory */}
-        <Route path="/movie-info/:id">
-          <MovieInfo martinscorses={movies} />
-        </Route>
-        <Route path="**">
-          <h1>Page not found</h1>
-        </Route>
-      </Switch>
-    </div>
+          <Route exact path="/">
+            <MovieList martinscorses={movies} setMovies={setMovies} />
+          </Route>
+          <Route path="/addmovies">
+            <Redirect to="/addmovie" />
+          </Route>
+          <Route path="/addmovie">
+            <AddMovie martinscorses={movies} addMovies={addMovie} />
+          </Route>
+          <Route path="/todo">
+            <TodoList />
+          </Route>
+          <Route path="/movie-edit/:id">
+            <EditMovie martinscorses={movies} setMovies={setMovies} />
+          </Route>
+          {/* UseHistory */}
+          <Route path="/movie-info/:id">
+            <MovieInfo martinscorses={movies} />
+          </Route>
+          <Route path="**">
+            <h1>Page not found</h1>
+          </Route>
+        </Switch>
+      </Paper>
+    </ThemeProvider>
   );
 }
 

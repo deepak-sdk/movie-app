@@ -3,6 +3,7 @@ import Counter from "../buttons/counter";
 import Card from "@mui/material/Card";
 import InfoIcon from "@mui/icons-material/Info";
 import CardMedia from "@mui/material/CardMedia";
+import CardContent from '@mui/material/CardContent';
 import IconButton from "@mui/material/IconButton";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
@@ -23,7 +24,7 @@ export default function Movies({
   const history = useHistory();
 
   // conditional styling
-  const styles = { color: rating > 8 ? "black" : "red" };
+  const styles = { color: rating > 8 ? "green" : "red" };
   const summaryStyle = { display: show ? "block" : "none" };
   return (
     <Card className="movies-list">
@@ -38,14 +39,12 @@ export default function Movies({
           </h3>
           <div className="header-icons">
             <InfoIcon
-              className="movie-info"
               onClick={() => {
                 history.push("./movie-info/" + id);
                 console.log(id);
               }}
             />
             <IconButton
-              className="hide-show-summary"
               onClick={() => setShow(!show)}
             >
               {show ? <ExpandLessIcon /> : <ExpandMoreIcon />}
@@ -63,9 +62,9 @@ export default function Movies({
           ) : (
             ""
           )}
-          <strong className="movie-rating" style={styles}>
+          <span className="movie-rating" style={styles}>
             IMDb : {rating} / 10
-          </strong>
+          </span>
         </div>
 
         <div class="edit-delete-button">

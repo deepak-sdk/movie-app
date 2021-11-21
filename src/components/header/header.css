@@ -1,21 +1,15 @@
 .header {
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
-    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
-  min-height: 100px;
+  margin-bottom: 20px;
   width: 100%;
-  padding: 0 10px;
-  /*position: fixed;
+
+  /* position: fixed;
   top: 0;
   left: 0;
   transition: 0.6s;
   background-color: white;
-  z-index: 100000;*/
+  z-index: 100000; */
 }
-.header-logo {
+/*.header-logo {
   display: flex;
   align-items: center;
 }
@@ -29,7 +23,7 @@
 .header-title {
   color: #1818183f;
   margin-left: 20px;
-}
+} */
 .nav-options {
   display: flex;
   gap: 20px;
