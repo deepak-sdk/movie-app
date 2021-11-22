@@ -3,7 +3,6 @@ import Counter from "../buttons/counter";
 import Card from "@mui/material/Card";
 import InfoIcon from "@mui/icons-material/Info";
 import CardMedia from "@mui/material/CardMedia";
-import CardContent from '@mui/material/CardContent';
 import IconButton from "@mui/material/IconButton";
 import ExpandLessIcon from "@mui/icons-material/ExpandLess";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";

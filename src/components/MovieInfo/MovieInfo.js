@@ -1,14 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useParams, useHistory } from "react-router";
 import "./MovieInfo.css";
 
-export const MovieInfo = ({ martinscorses }) => {
+export const MovieInfo = () => {
     const { id } = useParams();
-    const movie = martinscorses[id];
+    // const movie = martinscorses[id];
 
     const history = useHistory();
+
+    const [movie, setMovie] = useState({});
+    useEffect(() => {
+        fetch(`https://616d506937f997001745d992.mockapi.io/martinscorses/${id}`)
+            .then((data) => data.json())
+            .then((mv) => setMovie(mv));
+    }, [])
 
     const styles = {
         color: movie.rating < 8 ? "crimson" : "green",

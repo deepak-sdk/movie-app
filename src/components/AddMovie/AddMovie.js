@@ -3,7 +3,7 @@ import Button from '@mui/material/Button';
 import { NewMovie } from "./NewMovie/NewMovie";
 import './AddMovie.css';
 
-export function AddMovie({ addMovies }) {
+export function AddMovie() {
 
   const [showAddMovieForm, setShowAddMovieForm] = useState(false)
 
@@ -11,16 +11,13 @@ export function AddMovie({ addMovies }) {
     setShowAddMovieForm(false)
   }
 
-  const saveMovieDataHandler = (data) => {
-    const newMovie = {
-      ...data,
-      id: Math.random().toString()
-    }
+  // const saveMovieDataHandler = () => {
 
-    addMovies(newMovie)
-    setShowAddMovieForm(false)
 
-  }
+  //   // addMovies(newMovie)
+  //   setShowAddMovieForm(false)
+
+  // }
 
 
   // const [movies, setMovies] = useState(martinscorses);
@@ -48,7 +45,7 @@ export function AddMovie({ addMovies }) {
   return (
     <div class="add-movie-input-container">
       {!showAddMovieForm && <Button variant="outlined" onClick={() => { setShowAddMovieForm(true) }}>Add New Movie</Button>}
-      {showAddMovieForm && <NewMovie onSaveMovieData={saveMovieDataHandler} onCancel={cancelAddMovieFormHandler} />}
+      {showAddMovieForm && <NewMovie onCancel={cancelAddMovieFormHandler} />}
 
 
     </div>
