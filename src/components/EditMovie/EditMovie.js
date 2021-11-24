@@ -13,7 +13,7 @@ export const EditMovie = () => {
     fetch(`https://616d506937f997001745d992.mockapi.io/martinscorses/${id}`)
       .then((data) => data.json())
       .then((mv) => setMovie(mv));
-  }, []);
+  }, [id]);
   return movie ? <UpdateMovie movie={movie} setMovie={setMovie} /> : "";
 };
 
