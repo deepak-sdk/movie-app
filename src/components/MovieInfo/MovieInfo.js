@@ -15,7 +15,7 @@ export const MovieInfo = () => {
         fetch(`https://616d506937f997001745d992.mockapi.io/martinscorses/${id}`)
             .then((data) => data.json())
             .then((mv) => setMovie(mv));
-    }, [])
+    }, [id])
 
     const styles = {
         color: movie.rating < 8 ? "crimson" : "green",
