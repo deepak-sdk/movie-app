@@ -7,11 +7,12 @@ import { Switch, Route, Redirect } from "react-router-dom";
 import { EditMovie } from "./components/EditMovie/EditMovie";
 import { TodoList } from "./components/Todo/TodoList";
 import { MovieInfo } from "./components/MovieInfo/MovieInfo";
+import { Form } from "./components/Form/Form";
+import { GameOfLife } from "./components/GameOfLife/GameOfLife";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import Paper from "@mui/material/Paper";
 
 function App() {
-
   const [mode, setMode] = useState("light");
 
   const theme = createTheme({
@@ -20,9 +21,6 @@ function App() {
     },
   });
 
-
-
-
   // const addMovie = (data) => {
   //   // copy the movies list and add new movie
   //   // setMovies([...movies, data]);
@@ -30,9 +28,6 @@ function App() {
   //     return [...prevMovie, data];
   //   });
   // };
-
-
-
 
   return (
     <ThemeProvider theme={theme}>
@@ -58,6 +53,12 @@ function App() {
           <Route path="/todo">
             <TodoList />
           </Route>
+          <Route path="/basicform">
+            <Form />
+          </Route>
+          <Route path="/game-of-life">
+            <GameOfLife />
+          </Route>
           <Route path="/movie-edit/:id">
             <EditMovie />
           </Route>
@@ -75,6 +76,5 @@ function App() {
 }
 
 export default App;
-
 
 // fetch("https://616d506937f997001745d992.mockapi.io/martinscorses/" + id, { method: 'DELETE' })
