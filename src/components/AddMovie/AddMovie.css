@@ -1,4 +1,5 @@
-.add-movie-input-container {
+.add-movie-input-container,
+.addmovie-form {
   display: flex;
   flex-direction: column;
   gap: 10px;
