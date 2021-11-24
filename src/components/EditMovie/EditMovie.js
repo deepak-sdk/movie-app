@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useParams, useHistory } from "react-router";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
+import { useFormik } from "formik";
+import * as yup from "yup";
 import "./EditMovie.css";
 
 export const EditMovie = () => {
@@ -9,6 +11,7 @@ export const EditMovie = () => {
   // const movie = martinscorses[id];
 
   const [movie, setMovie] = useState(null);
+
   useEffect(() => {
     fetch(`https://616d506937f997001745d992.mockapi.io/martinscorses/${id}`)
       .then((data) => data.json())
@@ -19,26 +22,52 @@ export const EditMovie = () => {
 
 // Race Condition - Race b/w useEffect and useState
 
+const formValidationSchema = yup.object({
+  name: yup.string().required(),
+  pic: yup.string().min(5).required(),
+  rating: yup.number().min(0).max(10).required(),
+  summary: yup.string().min(20).required(),
+  year: yup.number().min(1890).required(),
+  trailer: yup.string().min(6).required(),
+});
+
 export const UpdateMovie = ({ movie, setMovie }) => {
   const history = useHistory();
 
-  const [name, setName] = useState(movie.name);
-  const [pic, setPic] = useState(movie.pic);
-  const [summary, setSummary] = useState(movie.summary);
-  const [rating, setRating] = useState(movie.rating);
-  const [year, setYear] = useState(movie.year);
-  const [trailer, setTrailer] = useState(movie.trailer);
+  // const [name, setName] = useState(movie.name);
+  // const [pic, setPic] = useState(movie.pic);
+  // const [summary, setSummary] = useState(movie.summary);
+  // const [rating, setRating] = useState(movie.rating);
+  // const [year, setYear] = useState(movie.year);
+  // const [trailer, setTrailer] = useState(movie.trailer);
 
-  const editMovie = (e) => {
-    e.preventDefault();
-    const updatedMovie = {
-      name,
-      pic,
-      rating,
-      summary,
-      year,
-      trailer,
-    };
+  const { handleSubmit, values, handleChange, handleBlur, errors, touched } =
+    useFormik({
+      initialValues: {
+        name: movie.name,
+        pic: movie.pic,
+        summary: movie.summary,
+        rating: movie.rating,
+        year: movie.year,
+        trailer: movie.trailer,
+      },
+      //   validate: validateForm,
+      validationSchema: formValidationSchema,
+      onSubmit: (updatedMovie) => {
+        editMovie(updatedMovie);
+      },
+    });
+
+  const editMovie = (updatedMovie) => {
+    // e.preventDefault();
+    // const updatedMovie = {
+    //   name,
+    //   pic,
+    //   rating,
+    //   summary,
+    //   year,
+    //   trailer,
+    // };
 
     // Swaping data
     // console.log(updatedMovie);
@@ -61,58 +90,88 @@ export const UpdateMovie = ({ movie, setMovie }) => {
       .then(() => history.push("/"));
   };
   return (
-    <div className="edit-movie-input-container">
+    <form onSubmit={handleSubmit} className="edit-movie-input-container">
       <TextField
-        id="outlined-basic"
+        id="name"
         label="Movie Name"
         variant="outlined"
-        value={name}
-        onChange={(event) => setName(event.target.value)}
+        name="name"
+        value={values.name}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        type="text"
+        error={errors.name && touched.name}
+        helperText={errors.name && touched.name && errors.name}
       />
 
       <TextField
-        id="outlined-basic"
+        id="pic"
         label="Movie Poster URL"
         variant="outlined"
-        value={pic}
-        onChange={(event) => setPic(event.target.value)}
+        name="pic"
+        value={values.pic}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        type="text"
+        error={errors.pic && touched.pic}
+        helperText={errors.pic && touched.pic && errors.pic}
       />
 
       <TextField
-        id="outlined-basic"
+        iid="rating"
         label="Rating"
         variant="outlined"
-        value={rating}
-        onChange={(event) => setRating(event.target.value)}
+        name="rating"
+        value={values.rating}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        type="number"
+        error={errors.rating && touched.rating}
+        helperText={errors.rating && touched.rating && errors.rating}
       />
 
       <TextField
-        id="outlined-basic"
+        id="summary"
         label="Summary"
         variant="outlined"
-        value={summary}
-        onChange={(event) => setSummary(event.target.value)}
+        name="summary"
+        value={values.summary}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        type="text"
+        error={errors.summary && touched.summary}
+        helperText={errors.summary && touched.summary && errors.summary}
       />
 
       <TextField
-        id="outlined-basic"
+        id="year"
         label="Year"
         variant="outlined"
-        value={year}
-        onChange={(event) => setYear(event.target.value)}
+        name="year"
+        value={values.year}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        type="number"
+        error={errors.year && touched.year}
+        helperText={errors.year && touched.year && errors.year}
       />
 
       <TextField
-        id="outlined-basic"
+        id="trailer"
         label="Trailer Embed-URL"
         variant="outlined"
-        value={trailer}
-        onChange={(event) => setTrailer(event.target.value)}
+        name="trailer"
+        value={values.trailer}
+        onChange={handleChange}
+        onBlur={handleBlur}
+        type="text"
+        error={errors.trailer && touched.trailer}
+        helperText={errors.trailer && touched.trailer && errors.trailer}
       />
 
-      <Button variant="outlined" onClick={editMovie}>
+      <Button variant="outlined" type="submit">
         Save Changes
       </Button>
-    </div>
+    </form>
   );
 };

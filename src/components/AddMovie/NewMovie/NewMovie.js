@@ -92,7 +92,6 @@ export const NewMovie = ({ onCancel }) => {
         type="text"
         error={errors.name && touched.name}
         helperText={errors.name && touched.name && errors.name}
-        summary
       />
 
       <TextField
