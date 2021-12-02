@@ -4,6 +4,7 @@ import Button from "@mui/material/Button";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { useHistory } from "react-router-dom";
+import { API_URL } from "../../../API_URL";
 
 const formValidationSchema = yup.object({
   name: yup.string().required(),
@@ -38,7 +39,9 @@ export const NewMovie = ({ onCancel }) => {
       //   validate: validateForm,
       validationSchema: formValidationSchema,
       onSubmit: (newMovie) => {
+        console.log(JSON.parse(JSON.stringify(newMovie)))
         sendDataToParent(newMovie);
+        
       },
     });
 
@@ -70,13 +73,16 @@ export const NewMovie = ({ onCancel }) => {
     //   await data(() => history.push("/"));
     // }
     // NewMovie();
-    fetch("https://616d506937f997001745d992.mockapi.io/martinscorses/", {
-      method: "POST",
-      body: JSON.parse(JSON.stringify(newMovie)),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }).then(() => history.push("/"));
+    fetch(
+      `${API_URL}`,
+      {
+        method: "POST",
+        body: JSON.stringify(newMovie),
+        headers: { "Content-Type": "application/json" },
+      }
+    )
+      .then((data) => data.json())
+      .then(() => history.push("/"));
   };
 
   return (

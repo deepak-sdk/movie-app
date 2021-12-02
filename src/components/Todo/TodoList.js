@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -36,7 +35,7 @@ export const TodoList = () => {
   console.log(itemList);
   return (
     <div className="todo-list">
-      <div className="input-button">
+      <form className="input-button" required>
         <TextField
           id="outlined-basic"
           variant="outlined"
@@ -50,7 +49,7 @@ export const TodoList = () => {
         <Button variant="outlined" onClick={handleClick}>
           Add
         </Button>
-      </div>
+      </form>
 
       <Card>
         <CardContent className="list-text">

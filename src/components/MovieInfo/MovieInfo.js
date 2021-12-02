@@ -3,6 +3,7 @@ import Button from "@mui/material/Button";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useParams, useHistory } from "react-router";
 import "./MovieInfo.css";
+import { API_URL } from "../../API_URL";
 
 export const MovieInfo = () => {
     const { id } = useParams();
@@ -12,7 +13,7 @@ export const MovieInfo = () => {
 
     const [movie, setMovie] = useState({});
     useEffect(() => {
-        fetch(`https://616d506937f997001745d992.mockapi.io/martinscorses/${id}`)
+        fetch(`${API_URL}/${id}`)
             .then((data) => data.json())
             .then((mv) => setMovie(mv));
     }, [id])

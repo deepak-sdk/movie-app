@@ -5,15 +5,17 @@ import Button from "@mui/material/Button";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import "./EditMovie.css";
+import { API_URL } from './../../API_URL';
 
 export const EditMovie = () => {
   const { id } = useParams();
+  console.log(id)
   // const movie = martinscorses[id];
 
   const [movie, setMovie] = useState(null);
 
   useEffect(() => {
-    fetch(`https://616d506937f997001745d992.mockapi.io/martinscorses/${id}`)
+    fetch(`${API_URL}/${id}`)
       .then((data) => data.json())
       .then((mv) => setMovie(mv));
   }, [id]);
@@ -32,6 +34,7 @@ const formValidationSchema = yup.object({
 });
 
 export const UpdateMovie = ({ movie, setMovie }) => {
+  const { id } = useParams();
   const history = useHistory();
 
   // const [name, setName] = useState(movie.name);
@@ -78,7 +81,7 @@ export const UpdateMovie = ({ movie, setMovie }) => {
     // history.push("/");
 
     fetch(
-      "https://616d506937f997001745d992.mockapi.io/martinscorses/" + movie.id,
+      `${API_URL}/${id}`,
       {
         method: "PUT",
         body: JSON.stringify(updatedMovie),
